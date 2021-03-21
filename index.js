@@ -138,8 +138,8 @@ const spawnEnemies = (spawnTime) => {
 
         const angle = Math.atan2(player.y - y, player.x - x)
         const velocity = {
-            x: Math.cos(angle),
-            y: Math.sin(angle)
+            x: Math.cos(angle) * 5,
+            y: Math.sin(angle) * 5
         }
 
         enemies.push(new Enemy(x, y, radius, `#${randomColor}`, velocity));
@@ -161,6 +161,22 @@ window.addEventListener('click', (e) => {
         const projectile = new Projectile(player.x, player.y,
             5, 'white', velocity);
         projectiles.push(projectile)
+    }
+})
+
+window.addEventListener("keypress", (e) => {
+    console.log(e.key)
+    if (e.key === 'ArrowUp' || e.key === 'w') {
+        player.y -= 10;
+    }
+    if (e.key === 'ArrowDown' || e.key === 's') {
+        player.y += 10;
+    }
+    if (e.key === 'ArrowRight' || e.key === 'd') {
+        player.x += 10;
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'a') {
+        player.x -= 10;
     }
 })
 
