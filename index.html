@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Game made by Tam</title>
+</head>
+
+<body style="margin: 0; ">
+
+    <div id="end-game" style="position:absolute; padding: 100px ; background-color: white; border-radius: 20px; display: none;">
+        <div>
+            <div id="score" style="text-align: center; font-size: 2em; margin-bottom: 5px;">Score: 0</div>
+            <button onclick="window.location.reload()"> 
+                <div style="font-size: 2em;">Restart Game</div> 
+            </button>
+        </div>
+    </div>
+
+    <canvas id="canvas-game" style="border:black 1px solid; margin: auto;"></canvas>
+    <script src="./index.js"></script>
+</body>
+
+</html>
