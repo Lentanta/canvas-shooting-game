@@ -138,8 +138,8 @@ const spawnEnemies = (spawnTime) => {
 
         const angle = Math.atan2(player.y - y, player.x - x)
         const velocity = {
-            x: Math.cos(angle) * 5,
-            y: Math.sin(angle) * 5
+            x: Math.cos(angle) * ((Math.random() * 7) + 3),
+            y: Math.sin(angle) * ((Math.random() * 7) + 3)
         }
 
         enemies.push(new Enemy(x, y, radius, `#${randomColor}`, velocity));
@@ -164,19 +164,20 @@ window.addEventListener('click', (e) => {
     }
 })
 
+let playerMove = null;
 window.addEventListener("keypress", (e) => {
     console.log(e.key)
     if (e.key === 'ArrowUp' || e.key === 'w') {
-        player.y -= 10;
+        playerMove = 'Up'
     }
     if (e.key === 'ArrowDown' || e.key === 's') {
-        player.y += 10;
+        playerMove = 'Down'
     }
     if (e.key === 'ArrowRight' || e.key === 'd') {
-        player.x += 10;
+        playerMove = 'Right'
     }
     if (e.key === 'ArrowLeft' || e.key === 'a') {
-        player.x -= 10;
+        playerMove = 'Left'
     }
 })
 
@@ -192,6 +193,18 @@ const animate = () => {
     scoreDisplay(score);
     if (player.isAlive) {
         player.draw();
+        if (playerMove === 'Up' && player.y > 1) {
+            player.y -= 5;
+        }
+        if (playerMove === 'Down' && player.y < canvas.height) {
+            player.y += 5;
+        }
+        if (playerMove === 'Right' && player.x < canvas.width) {
+            player.x += 5;
+        }
+        if (playerMove === 'Left' && player.x > 1) {
+            player.x -= 5;
+        }
     }
 
 
