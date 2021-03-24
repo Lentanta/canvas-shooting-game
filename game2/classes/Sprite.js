@@ -12,12 +12,16 @@ export class Sprite {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 
-    rotate(x, y, w, h, angle) {
-        this.image.src = this.fileName;
+    draw(angle, offset) {
         ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(angle * Math.PI / 180);
-        ctx.drawImage(this.image, -(w / 2), -(h / 2), w, h)
+        this.image.src = this.fileName;
+        ctx.translate(this.x, this.y);
+        ctx.rotate(angle + (offset * Math.PI / 180));
+        ctx.drawImage(this.image,
+            -(this.width / 2),
+            -(this.height / 2),
+            this.width,
+            this.height)
         ctx.restore();
     }
 }
