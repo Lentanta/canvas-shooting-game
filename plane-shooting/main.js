@@ -1,5 +1,6 @@
 import { Game } from './classes/Game.js';
 import { Player } from './classes/Player.js';
+import { revisedRandId } from './helper.js';
 
 window.canvas = document.getElementById('canvas-game');
 window.ctx = canvas.getContext('2d');
@@ -9,6 +10,14 @@ canvas.height = innerHeight - 30;
 window.game = new Game();
 
 game.eventListen();
+const player = new Player(revisedRandId(), 100, 100, 50, 50)
+
+// Websocket Open
+// ws.addEventListener('open', () => {
+//     game.isConnect = true;
+//     ws.send(`this player id: ${1}`)
+// })
+
 
 const speedDiplay = (number) => {
     ctx.save();
@@ -32,7 +41,9 @@ const speedDiplay = (number) => {
 
 
 
-const player = new Player(100, 100, 50, 50)
+
+
+
 const run = () => {
     let now = performance.now();
     let dt = (now - game.lastTime) / 1000.0;
@@ -42,8 +53,6 @@ const run = () => {
     game.clearScreen();
     player.update();
     speedDiplay(player.speed)
-
-
 }
 
 run();

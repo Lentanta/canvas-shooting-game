@@ -1,5 +1,6 @@
 export class Player {
-    constructor(x, y, width, height) {
+    constructor(id, x, y, width, height) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -32,7 +33,7 @@ export class Player {
     }
 
     speedControll() {
-        if (game.controller['w'].pressed && this.speed < 5 - 0.05) {
+        if (game.controller['w'].pressed && this.speed < 10 - 0.05) {
             this.speed += 0.05;
         }
         if (game.controller['s'].pressed && this.speed > 0 + 0.02) {
@@ -57,6 +58,4 @@ export class Player {
         this.move()
         this.returnToScreen()
     }
-
-
 }
